@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     let form = document.querySelector('form');
     let table = document.querySelector('tbody');
+    let filterSelect = document.getElementById('filter');
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -31,6 +32,20 @@ document.addEventListener('DOMContentLoaded', function () {
             <td id = "dlt"><button id = "btn" onclick="deleteRow(this)">Delete</button></td>`;
 
         form.reset();
+    });
+
+    filterSelect.addEventListener('change', function () {
+        const selectedSpecialization = filterSelect.value.toLowerCase();
+    
+        // Corrected: Use table instead of tableBody
+        let rows = table.getElementsByTagName('tr');
+        for (let i = 0; i < rows.length; i++) {
+            let specializationCell = rows[i].getElementsByTagName('td')[2];
+            if (specializationCell) {
+                let specialization = specializationCell.textContent.toLowerCase();
+                rows[i].style.display = selectedSpecialization === '' || specialization === selectedSpecialization ? '' : 'none';
+            }
+        }
     });
 });
 

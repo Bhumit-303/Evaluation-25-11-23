@@ -91,7 +91,8 @@ body {
   }
   
   table th{
-    background-color: rgb(32, 32, 232);
+    background-color: rgb(4,104,170);
+    /* background-color: rgb(32, 32, 232); */
     color: white;
   }
 
